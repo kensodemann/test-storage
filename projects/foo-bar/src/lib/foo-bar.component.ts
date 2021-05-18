@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'lib-foo-bar',
   template: `
-    <p>
-      foo-bar works!
-    </p>
+    <div>
+      <button (click)="save()">Save Data</button>
+    </div>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class FooBarComponent implements OnInit {
+  constructor(private storage: Storage) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  save() {
+    const now = new Date();
+    this.storage.ready().then(() => this.storage.set('my-data', now.toString()));
   }
-
 }
