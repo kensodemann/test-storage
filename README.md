@@ -1,27 +1,30 @@
 # TestStorage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
+This repo contains a simple Angular library called `foo-bar`
+It also contains a simple Angular application called `my-app` that consumes a component from `foo-bar`
 
-## Development server
+The point here is to show using `@ionic/storage` in both the library AND the application but only providing it in the application. Angular's dependency injection engine will inject it into the component from the library when it is used in the application.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+First, get the code and install the deps:
 
-## Code scaffolding
+- clone the repo
+- `cd test-storage`
+- `npm i`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Next, build the library and link it so it can be used by the `my-app` application:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- `npm run build`
+- `cd dist/foo-bar`
+- 'npm link'
+- `cd ../..`
+- `npm link foo-bar`
 
-## Running unit tests
+Finally, serve the `my-app` application:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `npm start`
 
-## Running end-to-end tests
+When first launched, there should be no data. Press the "Save Data" button. When you refresh the data, you will get the data that was saved the last time the button was pressed.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The library is saving the data, the application is reading the data.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
