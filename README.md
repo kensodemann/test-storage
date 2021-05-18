@@ -16,7 +16,7 @@ Next, build the library and link it so it can be used by the `my-app` applicatio
 
 - `npm run build`
 - `cd dist/foo-bar`
-- 'npm link'
+- `npm link`
 - `cd ../..`
 - `npm link foo-bar`
 
